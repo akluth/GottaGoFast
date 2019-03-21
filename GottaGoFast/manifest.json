@@ -1,0 +1,10 @@
+﻿{
+    "Name": "GottaGoFast",
+    "Author": "dittusch",
+    "Version": "0.1.4",
+    "Description": "Fasten up the running speed of the player",
+    "UniqueID": "dittusch.gottagofast",
+    "EntryDll": "GottaGoFast.dll",
+    "MinimumApiVersion": "2.10.0",
+    "UpdateKeys": ["GitHub:dittusch/GottaGoFast"]
+}
