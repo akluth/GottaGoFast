@@ -1,7 +1,7 @@
 ﻿{
     "Name": "GottaGoFast",
     "Author": "dittusch",
-    "Version": "0.1.4",
+    "Version": "0.1.5",
     "Description": "Fasten up the running speed of the player",
     "UniqueID": "dittusch.gottagofast",
     "EntryDll": "GottaGoFast.dll",

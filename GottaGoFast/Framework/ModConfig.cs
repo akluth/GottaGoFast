@@ -4,6 +4,6 @@
     {
         public int RunningSpeed { get; set; } = 7;
         public int DefaultSpeed { get; set; } = 2;
-        public bool ShowHUDMessage { get; set; } = true;
+        public bool ShowHudMessage { get; set; } = true;
     }
 }
