@@ -9,7 +9,8 @@ namespace GottaGoFast
     {
         private ModConfig Config;
 
-        private readonly SButton sprintKey = SButton.RightShoulder;
+        private readonly SButton sprintButton = SButton.RightShoulder;
+        private readonly SButton sprintKey = SButton.Tab;
         private bool isAlreadyGoingFast = false;
         private int addedSpeed;
         private ITranslationHelper i18n;
@@ -26,34 +27,38 @@ namespace GottaGoFast
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
         {
             Helper.Input.Suppress(sprintKey);
+            Helper.Input.Suppress(sprintButton);
 
             if (!Context.IsPlayerFree)
             {
                 return;
             }
 
-            if (!e.Button.Equals(sprintKey)) return;
-            if (!isAlreadyGoingFast)
+            if (e.Button.Equals(sprintKey) || e.Button.Equals(sprintButton))
             {
-                isAlreadyGoingFast = true;
-                addedSpeed = this.Config.RunningSpeed;
-
-                if (this.Config.ShowHudMessage)
+                if (!isAlreadyGoingFast)
                 {
-                    Game1.addHUDMessage(new HUDMessage(i18n.Get("gotta-go-fast.activated.hudmessage"), 2));
+                    isAlreadyGoingFast = true;
+                    addedSpeed = this.Config.RunningSpeed;
+
+                    if (this.Config.ShowHudMessage)
+                    {
+                        Game1.addHUDMessage(new HUDMessage(i18n.Get("gotta-go-fast.activated.hudmessage"), 2));
+                    }
+                }
+
+                else if (isAlreadyGoingFast)
+                {
+                    isAlreadyGoingFast = false;
+                    addedSpeed = this.Config.DefaultSpeed;
+
+                    if (this.Config.ShowHudMessage)
+                    {
+                        Game1.addHUDMessage(new HUDMessage(i18n.Get("gotta-go-fast.deactivated.hudmessage"), 2));
+                    }
                 }
             }
-
-            else if (isAlreadyGoingFast)
-            {
-                isAlreadyGoingFast = false;
-                addedSpeed = this.Config.DefaultSpeed;
-
-                if (this.Config.ShowHudMessage)
-                {
-                    Game1.addHUDMessage(new HUDMessage(i18n.Get("gotta-go-fast.deactivated.hudmessage"), 2));
-                }
-            }
+            
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
