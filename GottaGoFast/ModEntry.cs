@@ -9,7 +9,7 @@ namespace GottaGoFast
     {
         private ModConfig Config;
 
-        private readonly SButton sprintButton = SButton.RightShoulder;
+        private readonly SButton sprintButton = SButton.RightStick;
         private readonly SButton sprintKey = SButton.Tab;
         private bool isAlreadyGoingFast = false;
         private int addedSpeed;
